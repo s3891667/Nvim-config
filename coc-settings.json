@@ -1,0 +1,27 @@
+{
+  "languageserver": {
+    "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "trace.server": "verbose",
+      "filetypes": ["go"]
+    },
+  },
+  "coc.preferences.formatOnSaveFiletypes": ["css", "python","javascript", "html", "lua", "htmldjango","yml","lua","javascriptreact","typescriptreact","typescript","java"],
+  "diagnostic.showUnused": false,
+  "pyright.inlayHints.variableTypes": false,
+  "pyright.inlayHints.functionReturnTypes": false,
+  "python.analysis.diagnosticSeverityOverrides": {
+  	"reportUnusedVariable": "none"
+    
+  },
+  "python.venvPath":"~/Documents/CP/cloudApp/myCloudEnv/bin/activate",
+  "java.configuration.runtimes": [
+	  {
+		  "name": "JavaSE-17",
+		  "path": "/usr/lib/jvm/java-17-openjdk-amd64",
+		  "default": true
+	  }
+  ]
+
+}
