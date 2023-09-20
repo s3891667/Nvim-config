@@ -6,7 +6,7 @@ set completeopt=menuone,noinsert,noselect
 let g:airline_section_c = '%t'
 let g:airline_section_z = airline#section#create(['windowswap', '%p%% ☰', 'linenr'])
 let g:airline#extensions#whitespace#enabled = 0
-
+let g:airline_theme='catppuccin'
 "Yank tmux buffer to Xclip
 nnoremap <silent> <leader>c :silent !tmux save-buffer - \| xclip -selection clipboard<CR>
 
@@ -16,10 +16,6 @@ nnoremap <silent> <leader>c :silent !tmux save-buffer - \| xclip -selection clip
 let g:airline_skip_empty_sections = 1
 " remove the filetype part
 let g:airline_section_x = airline#section#create_right(['tagbar'])
-
-
-
-
 
 
 set clipboard+=unnamedplus
