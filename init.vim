@@ -24,7 +24,6 @@ set clipboard+=unnamedplus
 let g:python3_host_prog = "/home/wizburss/anaconda3/envs/py38/bin/python3.8"
 
 :set hidden
-
 :set number
 :set ignorecase
 :set termguicolors
@@ -37,7 +36,6 @@ let g:prettier#autoformat = 1
 :map <C-t> :NvimTreeToggle <CR>
 :map <C-y> :UndotreeToggle <CR>
         
-nmap <silent> gr <Plug>(coc-references)
 nnoremap <C-f> :Telescope find_files <CR>
 nnoremap <C-g> :Telescope live_grep <CR>
 

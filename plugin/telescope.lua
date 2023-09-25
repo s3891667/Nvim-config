@@ -7,6 +7,7 @@ require('telescope').setup{
 			disable_devicons = true,
 		},
 	},
+
     shorten_path = true,
 
 

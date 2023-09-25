@@ -73,6 +73,7 @@ return require('packer').startup(function()
 		config = function() return require("tmux").setup() end
 	})
 
+	--LSP
 	use {
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v2.x',
@@ -88,5 +89,13 @@ return require('packer').startup(function()
 			{ 'L3MON4D3/LuaSnip' }, -- Required
 		}
 	}
+	--switching like gods 
 	use 'ThePrimeagen/harpoon'
+
+	use {
+	  "rest-nvim/rest.nvim",
+	  requires = { "nvim-lua/plenary.nvim" },
+	}
+
+
 end)
