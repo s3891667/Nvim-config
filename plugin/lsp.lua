@@ -98,6 +98,9 @@ end)
 
 lsp.setup()
 
+--for PHP
+require'lspconfig'.intelephense.setup{}
+
 vim.diagnostic.config({
 	virtual_text = true
 })

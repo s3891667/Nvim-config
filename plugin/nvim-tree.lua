@@ -35,12 +35,12 @@ require("nvim-tree").setup({
 	enable = true,
       },
       icons = {
-      	show = {
+	      show = {
 	    file = false,
-            folder = true,
-            folder_arrow = false,
-            git = true,
-            modified = true,
+	    folder = true,
+	    folder_arrow = false,
+	    git = true,
+	    modified = true,
 	}
       }
   },

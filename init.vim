@@ -3,16 +3,25 @@ source $HOME/.config/nvim/vim-plug/plugins.vim
 
 set completeopt=menuone,noinsert,noselect
 
-let g:airline_section_c = '%t'
 let g:airline_section_z = airline#section#create(['windowswap', '%p%% ☰', 'linenr'])
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_theme='catppuccin'
+
+
+
+  function! AirlineInit()
+    let g:airline_section_c='%F'
+
+  endfunction
+  autocmd User AirlineAfterInit call AirlineInit()
+
 "Yank tmux buffer to Xclip
 nnoremap <silent> <leader>c :silent !tmux save-buffer - \| xclip -selection clipboard<CR>
 
 
 :nnoremap <Leader>n :set invnumber number?<CR>
-" remove separators for empty sections
+
+" remove separators for empty sections 12 minute 12 minute
 let g:airline_skip_empty_sections = 1
 " remove the filetype part
 let g:airline_section_x = airline#section#create_right(['tagbar'])

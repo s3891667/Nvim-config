@@ -4,14 +4,14 @@ return require('packer').startup(function()
 
 	--autopairs
 	use 'jiangmiao/auto-pairs'
+
 	--copy 	
 	use 'erickzanardo/vim-xclip'
 
 	--color
 	use 'gruvbox-community/gruvbox'
 
-
-	--display git information
+--display git information
 	use {
 		'lewis6991/gitsigns.nvim',
 		config = function()
@@ -89,13 +89,23 @@ return require('packer').startup(function()
 			{ 'L3MON4D3/LuaSnip' }, -- Required
 		}
 	}
-	--switching like gods 
+	--switching like gods
 	use 'ThePrimeagen/harpoon'
 
 	use {
-	  "rest-nvim/rest.nvim",
-	  requires = { "nvim-lua/plenary.nvim" },
+		"rest-nvim/rest.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
 	}
 
-
+	use {
+		"amitds1997/remote-nvim.nvim",
+		version = "*", -- This keeps it pinned to semantic releases
+		requires = {
+			--"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+			-- This would be an optional dependency eventually
+			--"nvim-telescope/telescope.nvim",
+		},
+	}
 end)
