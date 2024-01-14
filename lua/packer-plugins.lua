@@ -97,15 +97,4 @@ return require('packer').startup(function()
 		requires = { "nvim-lua/plenary.nvim" },
 	}
 
-	use {
-		"amitds1997/remote-nvim.nvim",
-		version = "*", -- This keeps it pinned to semantic releases
-		requires = {
-			--"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
-			-- This would be an optional dependency eventually
-			--"nvim-telescope/telescope.nvim",
-		},
-	}
 end)

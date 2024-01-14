@@ -39,7 +39,7 @@ let g:python3_host_prog = "/home/wizburss/anaconda3/envs/py38/bin/python3.8"
 :set cursorline
 set signcolumn=yes
 
-let g:transparent_enabled = v:true
+"let g:transparent_enabled = v:true
 let g:prettier#autoformat = 1
  
 :map <C-t> :NvimTreeToggle <CR>

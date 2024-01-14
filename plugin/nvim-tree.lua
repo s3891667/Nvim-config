@@ -3,34 +3,36 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 
-local columns = vim.api.nvim_get_option('columns')
 
 
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
+  hijack_cursor = false,
   filters = {
     dotfiles = false,
   },
   view = {
     side = "right",
-    float= {
-	enable = true,
-	quit_on_focus_loss = true,
-	open_win_config = {
-	    relative = "editor",
-	    border = "rounded",
-	    width = 40,
-	    height = 30,
-	    row = 1,
-	    col = columns,
-	  },
-    },
-    signcolumn = "yes",
+    --float= {
+	--enable = true,
+	--quit_on_focus_loss = true,
+	--open_win_config = {
+	    --relative = "editor",
+	    --border = "rounded",
+	    --width = 40,
+	    --height = 30,
+	    --row = 1,
+	    --col = columns,
+	  --},
+    --},
+    --signcolumn = "yes",
+    width = 40,
   },
+
   renderer = {
       full_name = true,
       highlight_git = true,
-      group_empty = true,
+      --group_empty = true,
       indent_markers = {
 	enable = true,
       },
@@ -45,6 +47,17 @@ require("nvim-tree").setup({
       }
   },
 })
+
+
+--require('nvim-tree').setup({
+ --hijack_cursor = false,
+ --renderer = {
+  --indent_markers = {
+    --enable = true,
+  --},
+ --},
+  --view = { width = 15 }
+--})
 
 require'nvim-tree.view'.View.winopts.relativenumber = true
 

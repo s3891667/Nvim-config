@@ -10,7 +10,11 @@ lsp.ensure_installed({
 	'rust_analyzer',
 })
 
--- fix undefined global 'vim'
+--for PHP
+require 'lspconfig'.intelephense.setup {}
+--for cpp
+require 'lspconfig'.clangd.setup {}
+
 lsp.nvim_workspace()
 
 cmp.setup({
@@ -82,8 +86,8 @@ lsp.on_attach(function(client, bufnr)
 	print('')
 
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+	vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
 	vim.keymap.set('n', 'gr', function() require('telescope.builtin').lsp_references() end, opts)
-	--vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
 	vim.keymap.set("n", "<leader>vd", function()
 			vim.diagnostic.open_float()
 		end,
@@ -92,14 +96,11 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
 	vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
 	vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-	--vim.keymap.set("i", "<c-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
 
 lsp.setup()
 
---for PHP
-require'lspconfig'.intelephense.setup{}
 
 vim.diagnostic.config({
 	virtual_text = true
