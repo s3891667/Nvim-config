@@ -96,5 +96,6 @@ return require('packer').startup(function()
 		"rest-nvim/rest.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
 	}
+	use {"tpope/vim-fugitive"}
 
 end)
