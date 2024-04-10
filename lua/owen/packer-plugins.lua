@@ -11,7 +11,7 @@ return require('packer').startup(function()
 	--color
 	use 'gruvbox-community/gruvbox'
 
---display git information
+	--display git information
 	use {
 		'lewis6991/gitsigns.nvim',
 		config = function()
@@ -70,7 +70,6 @@ return require('packer').startup(function()
 	--tmux
 	use({
 		"aserowy/tmux.nvim",
-		config = function() return require("tmux").setup() end
 	})
 
 	--LSP
@@ -92,10 +91,9 @@ return require('packer').startup(function()
 	--switching like gods
 	use 'ThePrimeagen/harpoon'
 
-	use {
-		"rest-nvim/rest.nvim",
-		requires = { "nvim-lua/plenary.nvim" },
-	}
-	use {"tpope/vim-fugitive"}
-
+	--use {
+	--"rest-nvim/rest.nvim",
+	--requires = { "nvim-lua/plenary.nvim" },
+	--}
+	use { "tpope/vim-fugitive" }
 end)

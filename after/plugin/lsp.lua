@@ -86,6 +86,7 @@ lsp.on_attach(function(client, bufnr)
 	print('')
 
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+	vim.keymap.set("n", "gD", function() vim.lsp.buf.documentation() end, opts)
 	vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
 	vim.keymap.set('n', 'gr', function() require('telescope.builtin').lsp_references() end, opts)
 	vim.keymap.set("n", "<leader>vd", function()

@@ -48,6 +48,8 @@ require("nvim-tree").setup({
 	},
 })
 
+
 require 'nvim-tree.view'.View.winopts.relativenumber = true
 vim.api.nvim_set_keymap('n', '<C-t>', "<cmd>lua require('nvim-tree.api').tree.toggle()<CR>",
 	{ noremap = true, silent = true })
+

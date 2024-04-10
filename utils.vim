@@ -1,5 +1,5 @@
 "Yank tmux buffer to Xclip
-nnoremap <silent> <leader>c :silent !tmux save-buffer - \| xclip -selection clipboard<CR>
+nnoremap <silent> <leader>c :silent !tmux show-buffer \| xclip -i -selection clipboard<CR>:echo "Text copied !"<CR>
 
 set clipboard+=unnamedplus
 
