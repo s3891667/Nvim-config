@@ -6,7 +6,7 @@ return require('packer').startup(function()
 	use 'jiangmiao/auto-pairs'
 
 	--copy 	
-	use 'erickzanardo/vim-xclip'
+	--use 'erickzanardo/vim-xclip'
 
 	--color
 	use 'gruvbox-community/gruvbox'

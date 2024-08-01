@@ -14,6 +14,7 @@ lsp.ensure_installed({
 require 'lspconfig'.intelephense.setup {}
 --for cpp
 require 'lspconfig'.clangd.setup {}
+require 'lspconfig'.html.setup {}
 
 lsp.nvim_workspace()
 
@@ -83,7 +84,6 @@ lsp.set_preferences({
 
 lsp.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
-	print('')
 
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
 	vim.keymap.set("n", "gD", function() vim.lsp.buf.documentation() end, opts)

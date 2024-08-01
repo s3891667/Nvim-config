@@ -1,4 +1,5 @@
 require('owen/packer-plugins')
+
 vim.o.relativenumber = true
 vim.opt.laststatus = 3
 vim.g.loaded_netrw = 1
