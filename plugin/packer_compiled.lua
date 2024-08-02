@@ -84,6 +84,12 @@ _G.packer_plugins = {
     path = "/home/wizburss/.local/share/nvim/site/pack/packer/start/auto-pairs",
     url = "https://github.com/jiangmiao/auto-pairs"
   },
+  catppuccin = {
+    config = { "\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0" },
+    loaded = true,
+    path = "/home/wizburss/.local/share/nvim/site/pack/packer/start/catppuccin",
+    url = "https://github.com/catppuccin/nvim"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/wizburss/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -171,7 +177,7 @@ _G.packer_plugins = {
     url = "https://github.com/aserowy/tmux.nvim"
   },
   ["toggleterm.nvim"] = {
-    config = { "\27LJ\2\n˜\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\15float_opts\1\0\2\vborder\vcurved\rwinblend\3\0\1\0\3\14direction\nfloat\17open_mapping\n<c-\\>\tsize\3\20\nsetup\15toggleterm\frequire\0" },
+    config = { "\27LJ\2\n˜\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\15float_opts\1\0\2\rwinblend\3\0\vborder\vcurved\1\0\3\17open_mapping\n<c-\\>\tsize\3\20\14direction\nfloat\nsetup\15toggleterm\frequire\0" },
     loaded = true,
     path = "/home/wizburss/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
@@ -184,14 +190,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+try_loadstring("\27LJ\2\n˜\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\15float_opts\1\0\2\rwinblend\3\0\vborder\vcurved\1\0\3\17open_mapping\n<c-\\>\tsize\3\20\14direction\nfloat\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
+time([[Config for toggleterm.nvim]], false)
+-- Config for: catppuccin
+time([[Config for catppuccin]], true)
+try_loadstring("\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0", "config", "catppuccin")
+time([[Config for catppuccin]], false)
 -- Config for: gitsigns.nvim
 time([[Config for gitsigns.nvim]], true)
 try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
 time([[Config for gitsigns.nvim]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-try_loadstring("\27LJ\2\n˜\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\15float_opts\1\0\2\vborder\vcurved\rwinblend\3\0\1\0\3\14direction\nfloat\17open_mapping\n<c-\\>\tsize\3\20\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
-time([[Config for toggleterm.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
