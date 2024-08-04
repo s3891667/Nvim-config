@@ -3,6 +3,7 @@ let g:airline#extensions#whitespace#enabled = 0
 let g:airline_theme='256noir'
 let g:airline_skip_empty_sections = 1
 let g:airline_section_x = airline#section#create_right(['tagbar'])
+let g:airline_symbols.branch = ''
 
   function! AirlineInit()
     let g:airline_section_c='%F'
