@@ -1,4 +1,5 @@
 "Cursor blink
+"
 set guicursor+=a:blinkon500
 :set hidden
 :set number
