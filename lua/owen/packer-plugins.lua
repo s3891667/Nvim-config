@@ -24,7 +24,7 @@ return require('packer').startup(function()
 		"catppuccin/nvim",
 		as = "catppuccin",
 		config = function()
-			--vim.api.nvim_command "colorscheme 256_noir"
+			--vim.api.nvim_command "catppuccin"
 			--vim.api.nvim_command "colorscheme nord"
 		end
 	}

@@ -1,9 +1,5 @@
 require('owen/packer-plugins')
 
-vim.keymap.set('n', '<Leader>tk', '<cmd>:ChatGPT<cr>')
-vim.keymap.set('n', '<Leader>tj', '<cmd>:ChatGPTActAs<cr>')
-vim.keymap.set('n', '<Leader>tt', '<cmd>:ChatGPTEditWithInstructions<cr>')
-
 vim.o.relativenumber = true
 vim.opt.laststatus = 3
 vim.g.loaded_netrw = 1
