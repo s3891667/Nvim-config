@@ -1,27 +1,108 @@
-local lsp = require("lsp-zero").preset({})
-local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
+ --LSP setupls
+vim.opt.signcolumn = 'yes'
 
-
-lsp.preset("recommended")
-
-lsp.ensure_installed({
-	'tsserver',
-	'rust_analyzer',
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('user_lsp_attach', {clear = true}),
+  callback = function(event)
+    local opts = {buffer = event.buf}
+  	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  	vim.keymap.set("n", "F3", function() vim.lsp.buf.format() end, opts)
+	vim.keymap.set("n", "<leader>vd", function()
+			vim.diagnostic.open_float()
+		end,
+		{ noremap = true, silent = true, buffer = bufnr })
+	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+	vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+	vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+	vim.keymap.set("i", "<C-s>", function() vim.lsp.buf.signature_help() end, opts)
+	vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+	vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+end
 })
 
---for PHP
-require 'lspconfig'.intelephense.setup {}
---for cpp
-require 'lspconfig'.clangd.setup {}
-require 'lspconfig'.html.setup {}
+vim.diagnostic.config({
+	virtual_text = true
+})
 
-lsp.nvim_workspace()
 
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = {'ts_ls', 'rust_analyzer'},
+  handlers = {
+    lua_ls = function()
+      require('lspconfig').lua_ls.setup({
+        capabilities = lsp_capabilities,
+        settings = {
+          Lua = {
+            runtime = {
+              version = 'LuaJIT'
+            },
+            diagnostics = {
+              globals = {'vim'},
+            },
+            workspace = {
+              library = {
+                vim.env.VIMRUNTIME,
+              }
+            }
+          }
+        }
+      })
+    end,
+
+    csharp_ls = function()
+      require('lspconfig').csharp_ls.setup({
+        capabilities = lsp_capabilities,
+	single_file_support = false,
+	on_attach = function(client, bufnr)
+		print('hello csharp' .. bufnr)
+	end,
+	root_dir = function(fname)
+	       return require("lspconfig.util").root_pattern("Assets", "ProjectSettings", "Packages")(fname)
+        	or require("lspconfig.util").find_git_ancestor(fname)
+        	or vim.fn.getcwd()  -- Fallback to current working directory
+	  end,
+	})
+    end,
+
+    ts_ls = function()
+	    require('lspconfig').ts_ls.setup({
+        	capabilities = lsp_capabilities,
+		on_attach = function(client, bufnr)
+			print('hello typescript')
+		end,
+		init_options = {
+			plugins = {
+		      {
+			name = "@vue/typescript-plugin",
+			location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+			languages = {"javascript", "typescript", "vue"},
+		      },
+		    },
+		  },
+		  filetypes = {
+		    "javascript",
+		    "typescript",
+		    "typescriptreact",
+		    "vue",
+		    "typescript.tsx"
+		  },
+	    })
+    end,
+    }
+})
+
+
+local cmp = require('cmp')
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
 cmp.setup({
-	sources = {
-		{ name = 'nvim_lsp' },
-	},
+sources = cmp.config.sources({
+    {name = 'nvim_lsp'},
+    {name = 'luasnip'},
+    {name = 'buffer'},
+  }) ,
 	mapping = {
 		['<c-y>'] = cmp.mapping.confirm({ select = true }),
 		['<CR>'] = cmp.mapping.confirm({ select = true }),
@@ -30,14 +111,14 @@ cmp.setup({
 		['<c-d>'] = cmp.mapping.scroll_docs(4),
 		['<c-p>'] = cmp.mapping(function()
 			if cmp.visible() then
-				cmp.select_prev_item(cmp_select_opts)
+				cmp.select_prev_item({behavior = cmp_select})
 			else
 				cmp.complete()
 			end
 		end),
 		['<c-n>'] = cmp.mapping(function()
 			if cmp.visible() then
-				cmp.select_next_item(cmp_select_opts)
+				cmp.select_next_item({behavior = cmp_select})
 			else
 				cmp.complete()
 			end
@@ -70,39 +151,11 @@ cmp.setup({
 	},
 })
 
-lsp.set_preferences({
-	suggest_lsp_servers = false,
-	sign_icons = {
-		error = 'e',
-		warn = 'w',
-		hint = 'h',
-		info = 'i'
-	}
-})
-
-
-
-lsp.on_attach(function(client, bufnr)
-	local opts = { buffer = bufnr, remap = false }
-
-	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-	vim.keymap.set("n", "gD", function() vim.lsp.buf.documentation() end, opts)
-	vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
-	vim.keymap.set('n', 'gr', function() require('telescope.builtin').lsp_references() end, opts)
-	vim.keymap.set("n", "<leader>vd", function()
-			vim.diagnostic.open_float()
-		end,
-		{ noremap = true, silent = true, buffer = bufnr })
-	vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-	vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-	vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-	vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-end)
-
-
-lsp.setup()
-
-
 vim.diagnostic.config({
-	virtual_text = true
+	signs = {
+	    text = {
+		[vim.diagnostic.severity.INFO] = '',
+		[vim.diagnostic.severity.HINT] = '',
+	    },
+	},
 })

@@ -6,5 +6,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'vim-airline/vim-airline-themes'
     Plug 'mbbill/undotree'
     Plug 'tonadev/vim-airline-256noir'
+    Plug 'chentoast/marks.nvim'
 
 call plug#end()

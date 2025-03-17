@@ -4,7 +4,6 @@ vim.g.loaded_netrwPlugin = 1
 
 
 
-
 require("nvim-tree").setup({
 	sort_by = "case_sensitive",
 	hijack_cursor = false,
@@ -34,17 +33,40 @@ require("nvim-tree").setup({
 		highlight_git = true,
 		--group_empty = true,
 		indent_markers = {
-			enable = true,
+			enable = false,
+			inline_arrows = false,
+
 		},
+		add_trailing = true,
 		icons = {
 			show = {
 				file = false,
-				folder = true,
-				folder_arrow = false,
+				folder = false,
+				folder_arrow = true,
 				git = true,
 				modified = true,
-			}
-		}
+			},
+			glyphs = {
+				--default = "",
+				--symlink = "",
+				--bookmark = "",
+				--modified = "●",
+				folder = {
+					arrow_closed = "+",
+					arrow_open = "~",
+				},
+				git = {
+					unstaged = "✗",
+					staged = " ✓",
+					unmerged = " ",
+					renamed = " ➜",
+					untracked = " ★",
+					deleted = " ",
+					ignored = " ◌",
+
+				}
+			},
+		},
 	},
 })
 
@@ -52,4 +74,3 @@ require("nvim-tree").setup({
 require 'nvim-tree.view'.View.winopts.relativenumber = true
 vim.api.nvim_set_keymap('n', '<C-t>', "<cmd>lua require('nvim-tree.api').tree.toggle()<CR>",
 	{ noremap = true, silent = true })
-
