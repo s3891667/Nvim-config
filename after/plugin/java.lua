@@ -1,8 +1,21 @@
-local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-require 'lspconfig'.jdtls.setup({
-        capabilities = lsp_capabilities,
-	on_attach = function(client, bufnr)
-		print('hello Java')
-	end,
+--how to complile java project (pure Java without Framework)
+--first complile 
+--javac com/smarthome/*.java
+--then run
+--java -cp . com.smarthome.Main
 
-})
+--vim.lsp.enable("jdtls")
+--require 'lspconfig'.jdtls.setup({
+	--settings = {
+		--java = {
+			--project = {
+				--referencedLibraries = {},
+				--sourcePaths = { "src" } -- This ensures `src` is treated as source root
+			--}
+		--}
+	--},
+	--on_attach = function(client, bufnr)
+		--print('hello Java')
+	--end,
+--})
+
